@@ -1,86 +1,113 @@
-# NORNE Reservoir Simulation – Flow Diagnostics & Well Performance
+# NORNE Reservoir Simulation – Field and Well Performance Review
 
-This project showcases a diagnostic analysis of black-oil reservoir simulation using the publicly available NORNE dataset and the OPM Flow + ResInsight toolchain. The focus is on simulating field behavior, analyzing well diagnostics, and visualizing key performance metrics.
+This portfolio project documents selected outputs from a **deterministic black-oil forward simulation of the open NORNE benchmark case** using **OPM Flow** and **ResInsight**.
 
----
-
-## Objectives
-
-- Simulate black-oil production using the NORNE dataset with OPM Flow.
-- Visualize performance indicators: production trends, pressure support, water/gas breakthrough.
-- Diagnose well performance using injection data and GOR/water cut evolution.
-- Visualize early timestep grid structure to highlight initial sweep potential and oil saturation distribution.
+The focus is on reading and comparing simulation outputs at field, grid and well level. The repository does **not** present history matching, uncertainty quantification or a causal diagnosis of reservoir behaviour.
 
 ---
 
-## Tools & Libraries
+## Scope
 
-- [OPM Flow](https://opm-project.org/) – Reservoir simulator  
-- [ResInsight](https://resinsight.org/) – Visualization  
-- WSL2 (Ubuntu on Windows)  
-- Python (for potential post-processing and automation)
+The review covers:
+
+- field oil and water-production trends;
+- initial oil-saturation distribution in the active grid;
+- well-level comparison of BHP, GOR, oil rate, water cut and water production;
+- a ResInsight flow-diagnostics allocation view.
+
+The plots are interpreted descriptively. Where the figures suggest different well behaviours, the repository does not attribute those differences to connectivity, coning, sweep efficiency or other mechanisms without additional analysis.
+
+---
+
+## Tools
+
+- **OPM Flow** — black-oil reservoir simulation
+- **ResInsight** — result visualisation and flow-diagnostics review
+- **WSL2 / Ubuntu on Windows** — execution environment used for the simulation workflow
 
 ---
 
 ## Dataset
 
-**Source:** [Norne Data Repository – NTNU](https://www.ntnu.edu/iet/norne)  
-**Files used:**  
-- `NORNE_ATW2013.DATA`  
-- `NORNE_ATW2013.SMSPEC`
+**Source:** NORNE benchmark dataset, NTNU  
+**Case used:** `NORNE_ATW2013`
+
+The original benchmark input files are not redistributed in this repository. Users should obtain the NORNE dataset from the source provider and comply with its terms.
 
 ---
 
-## Key Visualizations
+## Selected outputs
 
-### 1. Field Total Production  
-![Total Production](images/Total_Production_Plot1.png)  
-**Interpretation:**  
-Oil production peaked around timestep 30 (circa 2002), followed by a plateau and gradual decline. Injection support can be correlated with this stabilization phase.
+### 1. Field oil summary
 
----
+![Field oil summary](images/field_oil_summary.png)
 
-### 2. Grid Structure – Early Timestep  
-![Grid Structure](images/Grid_Structure_SOIL_1997.png)  
-**Interpretation:**  
-Active cells are distributed within fault-bounded zones. This early timestep captures high oil saturation regions and identifies potential sweep targets.
+The figure contains the ResInsight field vectors **FOIP**, **FOPR** and **FOPT**. Over the simulated period, the plotted oil-in-place quantity decreases while cumulative oil production increases. Because variables with very different magnitudes share one axis, the production-rate curve is visually compressed; the figure is therefore used as a qualitative field-level summary rather than a precise rate comparison.
 
 ---
 
-### 3. Well Comparison – E-4AH vs B-4BH  
-![Well Summary](images/Well_Summary_Comparison_E4AH_B4BH.png)  
-**Interpretation:**  
-- **E-4AH:** Stable BHP and late water breakthrough. Indicates productive, pressure-supported zone.  
-- **B-4BH:** Earlier breakthrough and steeper decline. May suggest poor connectivity or sweep inefficiency.
+### 2. Initial oil-saturation distribution
+
+![Initial oil saturation](images/initial_oil_saturation_1997.png)
+
+ResInsight view of **SOIL** at the initial simulation timestep (6 Nov 1997). The plot shows the spatial distribution of oil saturation across the active grid and fault-bounded model geometry.
+
+No sweep target or future flow path is inferred from this image alone.
 
 ---
 
-### 4. GOR & Water Cut Evolution  
-![GOR and Water Cut](images/GOR_WaterCut_Evolution.png)  
-**Interpretation:**  
-- Post-breakthrough, GOR increased in B-4BH while water cut surged. Suggests gas coning or end-of-life behavior.  
-- E-4AH showed more stable fluid ratios, indicating stronger reservoir support.
+### 3. Well comparison — E-4AH and B-4BH
+
+![Well comparison](images/well_comparison_E4AH_B4BH.png)
+
+The comparison displays well-level vectors including **WBHP, WGOR, WOPR, WWCT and WWPR**.
+
+The two wells show different operating histories and fluid-production behaviour. In this portfolio review, those differences are described from the plotted time series only; they are **not** used to claim specific causes such as poor connectivity, gas coning or sweep inefficiency.
 
 ---
 
-### 5. Field Water Injection (FWIT)  
-![Water Injection](images/FieldWater_Injection_Total.png)  
-**Interpretation:**  
-Injection volumes correlate with stabilization periods. Plateauing injection and BHP values reflect pressure maintenance strategy.
+### 4. Field water-production summary
+
+![Field water production](images/field_water_production_summary.png)
+
+This figure contains **FWPT, FWCT and FWPR**.
+
+**Correction from the earlier repository version:** these are **field water-production** variables, not water-injection variables. The cumulative water-production curve increases through the simulated period. As in the field-oil plot, shared-axis scaling compresses the lower-magnitude series.
+
+---
+
+### 5. ResInsight flow-volume allocation diagnostic
+
+![Flow volume allocation](images/flow_volume_allocation_fraction.png)
+
+This ResInsight diagnostic view reports an **accumulated total reservoir flow-volume allocation fraction** for producer wells over the displayed date range.
+
+The plot is retained as evidence of exposure to ResInsight flow-diagnostics outputs. No injector–producer connectivity or sweep conclusion is asserted from this figure alone.
 
 ---
 
 ## Limitations
 
-- The study is based on deterministic black-oil simulation results; no probabilistic or uncertainty quantification was applied.
-- No history matching or calibration was performed (this is a forward simulation only).
-- Diagnostics rely on interpreted visual plots rather than advanced reservoir engineering equations.
-- Pattern analysis and automated classification were not implemented.
+- Deterministic forward-simulation review only
+- No history matching or calibration
+- No uncertainty quantification or ensemble analysis
+- No independent validation against field observations in this repository
+- No automated flow-diagnostics workflow or causal classification
+- Several plots use shared axes for variables with very different magnitudes, so interpretation is intentionally qualitative
+- The repository contains selected result images and documentation rather than a complete reproducible NORNE simulation deck
 
 ---
 
-© 2025 – Anuri Nwagbara
+## What this project demonstrates
 
-This portfolio piece was created for demonstration and learning purposes, using publicly available NORNE datasets and open-source tools (OPM Flow, ResInsight).
+- Practical use of OPM Flow / ResInsight simulation outputs
+- Reading common field and well summary vectors
+- Comparing field, grid and well behaviour across a black-oil simulation
+- Recognising the boundary between **descriptive diagnostics** and stronger reservoir-engineering conclusions that would require additional evidence
 
+---
 
+## Author
+
+**Anuri Nwagbara**  
+*Geological Engineer*
