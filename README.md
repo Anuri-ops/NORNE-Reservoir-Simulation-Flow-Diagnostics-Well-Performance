@@ -1,8 +1,8 @@
 # NORNE Reservoir Simulation – Field and Well Performance Review
 
-This portfolio project documents selected outputs from a **deterministic black-oil forward simulation of the open NORNE benchmark case** using **OPM Flow** and **ResInsight**.
+This portfolio project documents selected outputs from a deterministic black-oil forward simulation of the open NORNE benchmark case using OPM Flow and ResInsight.
 
-The focus is on reading and comparing simulation outputs at field, grid and well level. The repository does **not** present history matching, uncertainty quantification or a causal diagnosis of reservoir behaviour.
+The focus is on reading and comparing simulation outputs at field, grid and well level. The repository does not present history matching, uncertainty quantification or a causal diagnosis of reservoir behaviour.
 
 ---
 
@@ -42,7 +42,7 @@ The original benchmark input files are not redistributed in this repository. Use
 
 ![Field oil summary](images/field_oil_summary.png)
 
-The figure contains the ResInsight field vectors **FOIP**, **FOPR** and **FOPT**. Over the simulated period, the plotted oil-in-place quantity decreases while cumulative oil production increases. Because variables with very different magnitudes share one axis, the production-rate curve is visually compressed; the figure is therefore used as a qualitative field-level summary rather than a precise rate comparison.
+The figure contains the ResInsight field vectors FOIP, FOPR and FOPT. Over the simulated period, the plotted oil-in-place quantity decreases while cumulative oil production increases. Because variables with very different magnitudes share one axis, the production-rate curve is visually compressed; the figure is therefore used as a qualitative field-level summary rather than a precise rate comparison.
 
 ---
 
@@ -50,7 +50,7 @@ The figure contains the ResInsight field vectors **FOIP**, **FOPR** and **FOPT**
 
 ![Initial oil saturation](images/initial_oil_saturation_1997.png)
 
-ResInsight view of **SOIL** at the initial simulation timestep (6 Nov 1997). The plot shows the spatial distribution of oil saturation across the active grid and fault-bounded model geometry.
+ResInsight view of SOIL at the initial simulation timestep (6 Nov 1997). The plot shows the spatial distribution of oil saturation across the active grid and fault-bounded model geometry.
 
 No sweep target or future flow path is inferred from this image alone.
 
@@ -60,9 +60,9 @@ No sweep target or future flow path is inferred from this image alone.
 
 ![Well comparison](images/well_comparison_E4AH_B4BH.png)
 
-The comparison displays well-level vectors including **WBHP, WGOR, WOPR, WWCT and WWPR**.
+The comparison displays well-level vectors including WBHP, WGOR, WOPR, WWCT and WWPR.
 
-The two wells show different operating histories and fluid-production behaviour. In this portfolio review, those differences are described from the plotted time series only; they are **not** used to claim specific causes such as poor connectivity, gas coning or sweep inefficiency.
+The two wells show different operating histories and fluid-production behaviour. In this portfolio review, those differences are described from the plotted time series only; they are not used to claim specific causes such as poor connectivity, gas coning or sweep inefficiency.
 
 ---
 
@@ -70,9 +70,9 @@ The two wells show different operating histories and fluid-production behaviour.
 
 ![Field water production](images/field_water_production_summary.png)
 
-This figure contains **FWPT, FWCT and FWPR**.
+This figure contains FWPT, FWCT and FWPR.
 
-**Correction from the earlier repository version:** these are **field water-production** variables, not water-injection variables. The cumulative water-production curve increases through the simulated period. As in the field-oil plot, shared-axis scaling compresses the lower-magnitude series.
+**Correction from the earlier repository version:** these are field water-production variables, not water-injection variables. The cumulative water-production curve increases through the simulated period. As in the field-oil plot, shared-axis scaling compresses the lower-magnitude series.
 
 ---
 
@@ -80,7 +80,7 @@ This figure contains **FWPT, FWCT and FWPR**.
 
 ![Flow volume allocation](images/flow_volume_allocation_fraction.png)
 
-This ResInsight diagnostic view reports an **accumulated total reservoir flow-volume allocation fraction** for producer wells over the displayed date range.
+This ResInsight diagnostic view reports an accumulated total reservoir flow-volume allocation fraction for producer wells over the displayed date range.
 
 The plot is retained as evidence of exposure to ResInsight flow-diagnostics outputs. No injector–producer connectivity or sweep conclusion is asserted from this figure alone.
 
@@ -103,7 +103,7 @@ The plot is retained as evidence of exposure to ResInsight flow-diagnostics outp
 - Practical use of OPM Flow / ResInsight simulation outputs
 - Reading common field and well summary vectors
 - Comparing field, grid and well behaviour across a black-oil simulation
-- Recognising the boundary between **descriptive diagnostics** and stronger reservoir-engineering conclusions that would require additional evidence
+- Recognising the boundary between descriptive diagnostics and stronger reservoir-engineering conclusions that would require additional evidence
 
 ---
 
